@@ -9,7 +9,7 @@ const NAV_LINKS = [
   { zh: '聯絡我', en: 'Contact', href: '#contact' },
 ]
 
-const PORTRAIT_URL = '/mickey-portrait.png'
+const PORTRAIT_URL = `${import.meta.env.BASE_URL}mickey-portrait.png`
 
 // Y2K sticker sparkles scattered around the hero
 const SPARKLES: SparkleDef[] = [

@@ -95,7 +95,7 @@ export default function AboutSection() {
         duration={0.9}
         className="absolute top-[4%] right-[1%] sm:right-[2%] md:right-[4%]"
       >
-        <img src="/laptop-glass.png" alt="" className="w-[140px] sm:w-[190px] md:w-[240px]" />
+        <img src={`${import.meta.env.BASE_URL}laptop-glass.png`} alt="" className="w-[140px] sm:w-[190px] md:w-[240px]" />
       </FadeIn>
 
       {/* Content */}
@@ -128,7 +128,7 @@ export default function AboutSection() {
             duration={0.9}
             className="pointer-events-none absolute right-0 bottom-0 z-20 translate-x-[60%] translate-y-[20%]"
           >
-            <img src="/cat.png" alt="" className="w-[110px] sm:w-[150px] md:w-[190px]" />
+            <img src={`${import.meta.env.BASE_URL}cat.png`} alt="" className="w-[110px] sm:w-[150px] md:w-[190px]" />
           </FadeIn>
 
           <FadeIn
