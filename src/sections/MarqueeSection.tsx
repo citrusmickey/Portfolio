@@ -1,31 +1,21 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 
-const IMAGES = [
-  'https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif',
-  'https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif',
-  'https://motionsites.ai/assets/hero-vex-ventures-preview-BczMFIiw.gif',
-  'https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif',
-  'https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif',
-  'https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif',
-  'https://motionsites.ai/assets/hero-vitara-preview-Cjz2QYyU.gif',
-  'https://motionsites.ai/assets/hero-terra-preview-BFjrCr7T.gif',
-  'https://motionsites.ai/assets/hero-skyelite-preview-DHaZIgUv.gif',
-  'https://motionsites.ai/assets/hero-aethera-preview-DknSlcTa.gif',
-  'https://motionsites.ai/assets/hero-designpro-preview-D8c5_een.gif',
-  'https://motionsites.ai/assets/hero-stellar-ai-preview-D3HL6bw1.gif',
-  'https://motionsites.ai/assets/hero-xportfolio-preview-D4A8maiC.gif',
-  'https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif',
-  'https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif',
-  'https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif',
-  'https://motionsites.ai/assets/hero-planet-orbit-preview-DWAP8Z1P.gif',
-  'https://motionsites.ai/assets/hero-new-era-preview-CocuDUm9.gif',
-  'https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif',
-  'https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif',
-  'https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif',
-]
+// 自動載入 src/assets/marquee/ 底下所有圖片（png / jpg / jpeg / gif / webp / avif / svg）。
+// 要新增或更換圖片，直接把檔案丟進那個資料夾即可，不用改這份程式；
+// 排序依檔名，可用 01-xxx.png、02-xxx.png 這種前綴控制順序。
+const MODULES = import.meta.glob(
+  '../assets/marquee/*.{png,jpg,jpeg,gif,webp,avif,svg}',
+  { eager: true, import: 'default' },
+) as Record<string, string>
 
-const ROW1 = IMAGES.slice(0, 11)
-const ROW2 = IMAGES.slice(11)
+const IMAGES = Object.keys(MODULES)
+  .sort()
+  .map((path) => MODULES[path])
+
+// 對半分成上下兩排；奇數張時上排多一張
+const HALF = Math.ceil(IMAGES.length / 2)
+const ROW1 = IMAGES.slice(0, HALF)
+const ROW2 = IMAGES.slice(HALF)
 
 const STICKER_COLORS = ['#FF3EA5', '#00D2FF', '#C6FF3D', '#9B5DE5']
 
@@ -49,8 +39,8 @@ const Tile = ({ src, index }: { src: string; index: number }) => {
         src={src}
         alt=""
         loading="lazy"
-        className="object-cover block"
-        style={{ width: 420, height: 270, borderRadius: 14 }}
+        className="block"
+        style={{ height: 270, width: 'auto', borderRadius: 14 }}
       />
     </div>
   )

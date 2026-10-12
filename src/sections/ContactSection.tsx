@@ -1,13 +1,6 @@
-import { Mail, Github, Linkedin } from 'lucide-react'
 import FadeIn from '../components/FadeIn'
 import ContactButton from '../components/ContactButton'
 import Sparkles, { type SparkleDef } from '../components/Sparkles'
-
-const SOCIALS = [
-  { label: 'Email', href: 'mailto:mickeyyu1106@gmail.com', Icon: Mail },
-  { label: 'GitHub', href: '#', Icon: Github },
-  { label: 'LinkedIn', href: '#', Icon: Linkedin },
-]
 
 const SPARKLES: SparkleDef[] = [
   { char: '✦', color: '#FF3EA5', top: '16%', left: '14%', size: 'clamp(22px, 4vw, 52px)' },
@@ -45,31 +38,8 @@ export default function ContactSection() {
         Let&apos;s talk
       </FadeIn>
 
-      <FadeIn
-        as="p"
-        delay={0.15}
-        className="text-[#24004D] font-light uppercase tracking-wide text-center max-w-[520px]"
-        style={{ fontSize: 'clamp(0.85rem, 1.6vw, 1.25rem)' }}
-      >
-        have a project in mind or just want to say hi? drop me a line and let&apos;s
-        build something incredible together.
-      </FadeIn>
-
       <FadeIn delay={0.3}>
         <ContactButton href="mailto:mickeyyu1106@gmail.com" />
-      </FadeIn>
-
-      <FadeIn delay={0.45} className="flex items-center gap-6 sm:gap-8">
-        {SOCIALS.map(({ label, href, Icon }) => (
-          <a
-            key={label}
-            href={href}
-            aria-label={label}
-            className="text-[#FF3EA5] transition-opacity duration-200 hover:opacity-70"
-          >
-            <Icon size={26} strokeWidth={1.5} />
-          </a>
-        ))}
       </FadeIn>
 
         <p className="text-[#24004D]/40 uppercase tracking-widest text-xs mt-8">

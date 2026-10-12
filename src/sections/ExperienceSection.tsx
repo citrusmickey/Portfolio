@@ -12,42 +12,27 @@ type Experience = {
   period: string
   role: string
   company: string
-  description: string
+  description?: string
+  points?: string[]
 }
 
-// TODO: 換成 Mickey 真實的工作經歷
 const EXPERIENCES: Experience[] = [
   {
-    year: '2024',
-    period: '2024 — Present',
-    role: 'Senior Front-End Developer',
-    company: 'Acme Studio',
-    description:
-      'Leading the rebuild of the company web platform with React and TypeScript, owning the design system and shipping performant, accessible interfaces.',
-  },
-  {
-    year: '2022',
-    period: '2022 — 2024',
-    role: 'Front-End Developer',
-    company: 'Pixel Labs',
-    description:
-      'Built and shipped responsive marketing sites and internal tools, collaborating closely with designers to translate Figma into pixel-accurate UI.',
-  },
-  {
     year: '2021',
-    period: '2021 — 2022',
-    role: 'UI Engineer',
-    company: 'Bright Digital',
-    description:
-      'Developed reusable component libraries and motion-driven landing pages, improving delivery speed across multiple client projects.',
-  },
-  {
-    year: '2020',
-    period: '2020 — 2021',
-    role: 'Junior Web Developer',
-    company: 'Startup Co',
-    description:
-      'Started my journey building websites end to end, learning modern front-end tooling and the fundamentals of clean, maintainable code.',
+    period: '2021.01 - 2026.09',
+    role: 'Front-End Developer',
+    company: 'Citrus 思圖',
+    points: [
+      '主導線上點餐核心流程開發，實作商品分類、商品客製化、套餐組合、購物車、數量限制、促銷、售罄檢查及訂單確認等功能，並依內用、外帶等不同服務模式處理複雜商業邏輯',
+      '串接國內外多種第三方支付服務，負責付款流程、支付 API 串接、付款結果及訂單狀態同步，處理付款失敗、重試及交易異常等情境，確保支付與訂單流程正常運作',
+      '優化點餐系統前端狀態管理，重新整理 localStorage、商品及購物車資料同步流程，處理商品數量、套餐、客製化及外帶拆單等複雜情境，避免資料互相污染及狀態不同步問題',
+      '改善前端事件與效能問題，針對重複事件綁定、DOM 操作及大量商品列表進行優化，搭配事件管理及資料處理調整，改善門市與行動裝置操作體驗',
+      '處理跨瀏覽器與 WebView 相容性問題，針對 iOS、行動瀏覽器及 WebView 環境進行問題排查，處理 Cache、Overflow、HTTP/2 等上線環境問題，確保點餐服務穩定運作',
+      '主導線上點餐系統重構，修改成前後端分離架構，使用 React 作為前端 UI 及 .net9 撰寫後端 webApi 重構，針對既有系統進行架構與程式碼整理，重新拆分共用元件、頁面邏輯及資料處理流程，並優化購物車、商品、訂單等核心模組，提升系統可維護性及後續功能開發效率',
+      '負責後台管理系統重構，修改成前後端分離架構，使用 Vue3 及 Bootstrap5 作為前端 UI 及 .net8 撰寫後端 webApi 重構，重新整理商品、門市、分類、促銷及訂單等功能模組，將重複 UI 與業務邏輯進行元件化及模組化，降低功能間的耦合程度，提升後台系統擴充與維護效率',
+      '負責 BI 報表、預約及候位系統開發，串接後端 API 整合訂單、門市及營運資料，建立資料查詢、使用 Chart.js 或 ECharts.js 建立可視化圖表及管理介面，支援餐廳營運分析與預約候位流程',
+      '優化多專案部署流程，導入自動化流程，透過 GitHub Actions CI/CD 提升部署效率',
+    ],
   },
 ]
 
@@ -94,12 +79,34 @@ export default function ExperienceSection() {
               >
                 {exp.company} · {exp.period}
               </span>
-              <p
-                className="font-light leading-relaxed max-w-2xl mt-1"
-                style={{ color: '#24004D', opacity: 0.7, fontSize: 'clamp(0.85rem, 1.6vw, 1.25rem)' }}
-              >
-                {exp.description}
-              </p>
+              {exp.description && (
+                <p
+                  className="font-light leading-relaxed max-w-2xl mt-1"
+                  style={{ color: '#24004D', opacity: 0.7, fontSize: 'clamp(0.85rem, 1.6vw, 1.25rem)' }}
+                >
+                  {exp.description}
+                </p>
+              )}
+              {exp.points && (
+                <ul className="mt-3 flex flex-col gap-2.5 max-w-3xl">
+                  {exp.points.map((pt, j) => (
+                    <li
+                      key={j}
+                      className="flex gap-2.5 font-light leading-relaxed"
+                      style={{ color: '#24004D', fontSize: 'clamp(0.8rem, 1.3vw, 1.05rem)' }}
+                    >
+                      <span
+                        aria-hidden
+                        className="shrink-0 select-none"
+                        style={{ color: '#FF3EA5' }}
+                      >
+                        ▹
+                      </span>
+                      <span style={{ opacity: 0.8 }}>{pt}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           </FadeIn>
         ))}

@@ -14,7 +14,7 @@ html,
 body,
 #root {
   background: #e6f7ff;
-  font-family: 'Kanit', sans-serif;
+  font-family: 'Kanit', 'Huninn', sans-serif;
 }
 
 .hero-heading {
@@ -53,6 +53,30 @@ body,
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+}
+
+/* Navbar CN -> EN hover swap. Both labels share one grid cell, so the cell is
+   sized to the wider label and neighbours never shift when the text swaps. */
+.nav-swap {
+  display: inline-grid;
+  align-items: center;
+  justify-items: center;
+}
+.nav-swap > span {
+  grid-area: 1 / 1;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.nav-en {
+  opacity: 0;
+  transform: translateY(5px);
+}
+.nav-swap:hover .nav-zh {
+  opacity: 0;
+  transform: translateY(-5px);
+}
+.nav-swap:hover .nav-en {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Y2K sticker sparkle */
@@ -142,6 +166,38 @@ body,
   }
   100% {
     background-position: 220% 50%;
+  }
+}
+
+/* Y2K wave-light button — a soft light band ripples across on hover */
+.wave-btn {
+  position: relative;
+  overflow: hidden;
+}
+.wave-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 25%,
+    rgba(255, 255, 255, 0.25) 42%,
+    rgba(255, 255, 255, 0.7) 50%,
+    rgba(255, 255, 255, 0.25) 58%,
+    transparent 75%
+  );
+  transform: translateX(-130%);
+  pointer-events: none;
+}
+.wave-btn:hover::before {
+  animation: waveShine 1.3s linear infinite;
+}
+@keyframes waveShine {
+  0% {
+    transform: translateX(-130%);
+  }
+  100% {
+    transform: translateX(130%);
   }
 }
 

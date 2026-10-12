@@ -1,13 +1,12 @@
 import FadeIn from '../components/FadeIn'
 import Magnet from '../components/Magnet'
-import ContactButton from '../components/ContactButton'
 import Sparkles, { type SparkleDef } from '../components/Sparkles'
 
 const NAV_LINKS = [
-  { label: 'About', href: '#about' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Contact', href: '#contact' },
+  { zh: '關於我', en: 'About', href: '#about' },
+  { zh: '工作經歷', en: 'Experience', href: '#experience' },
+  { zh: '作品介紹', en: 'Projects', href: '#projects' },
+  { zh: '聯絡我', en: 'Contact', href: '#contact' },
 ]
 
 const PORTRAIT_URL = '/mickey-portrait.png'
@@ -50,11 +49,12 @@ export default function HeroSection() {
       >
         {NAV_LINKS.map((link) => (
           <a
-            key={link.label}
+            key={link.href}
             href={link.href}
-            className="text-[#24004D] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] transition-opacity duration-200 hover:opacity-70"
+            className="nav-swap text-[#24004D] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem]"
           >
-            {link.label}
+            <span className="nav-zh whitespace-nowrap">{link.zh}</span>
+            <span className="nav-en whitespace-nowrap">{link.en}</span>
           </a>
         ))}
       </FadeIn>
@@ -65,7 +65,7 @@ export default function HeroSection() {
           as="h1"
           delay={0.15}
           y={40}
-          className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap w-full text-[12vw] sm:text-[12.5vw] md:text-[13vw] lg:text-[13.5vw] mt-6 sm:mt-4 md:-mt-5"
+          className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap w-full text-center text-[12vw] sm:text-[12.5vw] md:text-[13vw] lg:text-[13.5vw] mt-6 sm:mt-4 md:-mt-5"
         >
           Hi, i&apos;m Mickey
         </FadeIn>
@@ -86,24 +86,6 @@ export default function HeroSection() {
               className="w-[280px] sm:w-[360px] md:w-[440px] lg:w-[520px]"
             />
           </Magnet>
-        </FadeIn>
-      </div>
-
-      {/* Bottom bar */}
-      <div className="relative z-20 mt-auto flex items-end justify-between px-6 md:px-10 pb-7 sm:pb-8 md:pb-10">
-        <FadeIn
-          as="p"
-          delay={0.35}
-          y={20}
-          className="text-[#24004D] font-light uppercase tracking-wide leading-snug max-w-[160px] sm:max-w-[220px] md:max-w-[260px]"
-          style={{ fontSize: 'clamp(0.75rem, 1.4vw, 1.5rem)' }}
-        >
-          a front-end developer driven by crafting striking and unforgettable
-          projects
-        </FadeIn>
-
-        <FadeIn delay={0.5} y={20}>
-          <ContactButton />
         </FadeIn>
       </div>
     </section>

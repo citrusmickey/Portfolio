@@ -1,0 +1,96 @@
+<svg width="260" height="220" viewBox="0 0 260 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- screen holographic -->
+    <linearGradient id="holo" x1="60" y1="26" x2="198" y2="118" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF3EA5"/>
+      <stop offset="0.33" stop-color="#9B5DE5"/>
+      <stop offset="0.66" stop-color="#00D2FF"/>
+      <stop offset="1" stop-color="#C6FF3D"/>
+    </linearGradient>
+    <!-- bezel: lit top-left, dark bottom-right for volume -->
+    <linearGradient id="bezel" x1="56" y1="14" x2="204" y2="128" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5a4a7e"/>
+      <stop offset="0.45" stop-color="#2c1b4d"/>
+      <stop offset="1" stop-color="#100622"/>
+    </linearGradient>
+    <!-- chrome base, cylindrical sheen -->
+    <linearGradient id="chrome" x1="130" y1="120" x2="130" y2="182" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff"/>
+      <stop offset="0.22" stop-color="#eef3fc"/>
+      <stop offset="0.42" stop-color="#c3cde4"/>
+      <stop offset="0.6" stop-color="#9aa7c8"/>
+      <stop offset="0.78" stop-color="#7a88aa"/>
+      <stop offset="1" stop-color="#aebbd7"/>
+    </linearGradient>
+    <!-- specular hotspot on the deck -->
+    <radialGradient id="deckSpec" cx="0.42" cy="0.2" r="0.7">
+      <stop stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="0.4" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="hinge" x1="70" y1="122" x2="70" y2="134" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f4f7fd"/>
+      <stop offset="0.5" stop-color="#b3bfdc"/>
+      <stop offset="1" stop-color="#6d7b9e"/>
+    </linearGradient>
+    <!-- holo color bounce reflected onto deck -->
+    <linearGradient id="bounce" x1="60" y1="0" x2="200" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF3EA5"/>
+      <stop offset="0.5" stop-color="#9B5DE5"/>
+      <stop offset="1" stop-color="#00D2FF"/>
+    </linearGradient>
+    <clipPath id="screenClip"><rect x="63" y="27" width="134" height="88" rx="10"/></clipPath>
+    <clipPath id="deckClip"><path d="M44 130 L216 130 L244 170 Q246 176 239 176 L21 176 Q14 176 16 170 Z"/></clipPath>
+  </defs>
+
+  <!-- ground shadow -->
+  <ellipse cx="131" cy="190" rx="100" ry="15" fill="#24004D" opacity="0.18"/>
+
+  <!-- ===== SCREEN ===== -->
+  <!-- bezel thickness (dark underside offset) -->
+  <rect x="52" y="20" width="156" height="110" rx="18" fill="#0c0418"/>
+  <!-- bezel face -->
+  <rect x="52" y="15" width="156" height="110" rx="18" fill="url(#bezel)"/>
+  <!-- top-left bright rim -->
+  <path d="M70 17 Q58 17 54 29" stroke="#c9b8ef" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
+  <!-- screen holo -->
+  <rect x="63" y="27" width="134" height="88" rx="10" fill="url(#holo)"/>
+  <!-- screen reflections -->
+  <g clip-path="url(#screenClip)">
+    <!-- soft top glow -->
+    <rect x="63" y="27" width="134" height="30" fill="#ffffff" opacity="0.14"/>
+    <!-- glossy diagonal streaks -->
+    <path d="M78 27 L104 27 L66 117 L50 117 Z" fill="#ffffff" opacity="0.26"/>
+    <path d="M112 27 L124 27 L86 117 L74 117 Z" fill="#ffffff" opacity="0.16"/>
+    <!-- bottom inner shade -->
+    <rect x="63" y="100" width="134" height="15" fill="#1a0a2e" opacity="0.18"/>
+  </g>
+  <!-- specular corner dot -->
+  <circle cx="78" cy="40" r="6" fill="#ffffff" opacity="0.5"/>
+
+  <!-- hinge -->
+  <rect x="66" y="122" width="128" height="10" rx="5" fill="url(#hinge)"/>
+
+  <!-- ===== KEYBOARD BASE ===== -->
+  <path d="M44 130 L216 130 L244 170 Q246 176 239 176 L21 176 Q14 176 16 170 Z" fill="url(#chrome)" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"/>
+  <g clip-path="url(#deckClip)">
+    <!-- holo color bounce near hinge -->
+    <rect x="44" y="130" width="172" height="12" fill="url(#bounce)" opacity="0.22"/>
+    <!-- broad specular highlight -->
+    <ellipse cx="118" cy="140" rx="92" ry="30" fill="url(#deckSpec)"/>
+    <!-- keyboard area -->
+    <path d="M70 136 L190 136 L202 158 L58 158 Z" fill="#8a97b8" opacity="0.28"/>
+    <!-- subtle key rows -->
+    <path d="M74 142 L186 142 M72 148 L188 148 M70 154 L190 154" stroke="#5f6d90" stroke-width="1.4" opacity="0.3"/>
+    <!-- trackpad -->
+    <path d="M104 162 L156 162 L162 172 L98 172 Z" fill="#6f7d9e" opacity="0.5"/>
+    <!-- bright front edge -->
+    <path d="M18 170 L244 170 L245 172 L17 172 Z" fill="#ffffff" opacity="0.6"/>
+  </g>
+  <!-- front lip shadow -->
+  <path d="M21 176 L239 176 Q233 182 225 182 L35 182 Q27 182 21 176 Z" fill="#6a789a"/>
+
+  <!-- Y2K sparkles -->
+  <path d="M36 44 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3 Z" fill="#FF3EA5"/>
+  <path d="M226 72 l2.5 6 6 2.5 -6 2.5 -2.5 6 -2.5 -6 -6 -2.5 6 -2.5 Z" fill="#00D2FF"/>
+</svg>
